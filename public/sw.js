@@ -1,6 +1,6 @@
 /* عامل الخدمة لتطبيق «أتمّ»: يحفظ نسخة من التطبيق ليعمل دون إنترنت.
    عند نشر تحديث جديد: غيّر رقم الإصدار في السطر التالي. */
-const VERSION = "atamm-v1";
+const VERSION = "atamm-v2";
 const FONTS = "atamm-fonts-v1";
 const SHELL = [
   "./",
