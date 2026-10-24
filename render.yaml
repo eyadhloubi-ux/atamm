@@ -1,0 +1,35 @@
+# إعداد النشر على Render (Blueprint) — موقع ثابت لا يحتاج خادمًا ولا قاعدة بيانات
+services:
+  - type: web
+    name: atamm
+    runtime: static
+    buildCommand: echo "No build step required"
+    staticPublishPath: ./public
+    headers:
+      # الصفحة وعامل الخدمة بلا تخزين مؤقت، كي تصل التحديثات فورًا
+      - path: /
+        name: Cache-Control
+        value: no-cache
+      - path: /index.html
+        name: Cache-Control
+        value: no-cache
+      - path: /sw.js
+        name: Cache-Control
+        value: no-cache
+      - path: /manifest.webmanifest
+        name: Content-Type
+        value: application/manifest+json
+      # الأيقونات ثابتة، تُخزَّن أسبوعًا
+      - path: /icons/*
+        name: Cache-Control
+        value: public, max-age=604800
+      # ترويسات أمان أساسية
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
+      - path: /*
+        name: Referrer-Policy
+        value: strict-origin-when-cross-origin
+      - path: /*
+        name: X-Frame-Options
+        value: SAMEORIGIN
